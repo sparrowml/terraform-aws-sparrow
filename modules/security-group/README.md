@@ -1,4 +1,4 @@
-# Simplified Security Groups
+# Security Groups
 
 Easily add dev machine IP to ingress rules.
 
