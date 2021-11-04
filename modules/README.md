@@ -1,6 +1,7 @@
 # Simplified Security Groups
 
-Add dev machine IP to ingress entries. Egress is open to the internet.
+Easily add dev machine IP to ingress rules.
 
+## API
 * [Inputs](./variables.tf)
 * [Outputs](./outputs.tf)
