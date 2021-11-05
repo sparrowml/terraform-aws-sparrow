@@ -3,7 +3,7 @@ variable "name" {
   description = "The name of the instance"
 }
 
-variable "instance_type" {
+variable "instance" {
   type        = string
   description = "The type of the instance"
 }
@@ -18,7 +18,7 @@ variable "key_name" {
   description = "The name of the key pair for SSH access"
 }
 
-variable "public_ip" {
+variable "public" {
   type        = bool
   description = "Whether to associate a public IP address"
   default     = true
@@ -42,7 +42,7 @@ variable "user_data" {
   default     = null
 }
 
-variable "volume_size" {
+variable "storage" {
   type        = number
   description = "Size of the root volume in Gb"
   default     = 20
