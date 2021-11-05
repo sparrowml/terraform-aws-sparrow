@@ -1,4 +1,4 @@
-data "http" "myip" {
+data "http" "my_ip" {
   url = "http://ipv4.icanhazip.com"
 }
 
@@ -11,7 +11,7 @@ resource "aws_security_group" "sparrow" {
     protocol  = "tcp"
 
     cidr_blocks = concat(
-      var.myip ? ["${chomp(data.http.myip.body)}/32"] : [],
+      var.my_ip ? ["${chomp(data.http.my_ip.body)}/32"] : [],
       var.all_traffic ? ["0.0.0.0/0"] : []
     )
 
