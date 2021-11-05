@@ -6,10 +6,15 @@ resource "aws_security_group" "sparrow" {
   name   = var.name
   vpc_id = var.vpc_id
   ingress = [for port in var.ingress_ports : {
-    from_port        = port
-    to_port          = port
-    protocol         = "tcp"
-    cidr_blocks      = var.myip ? ["${chomp(data.http.myip.body)}/32"] : []
+    from_port = port
+    to_port   = port
+    protocol  = "tcp"
+
+    cidr_blocks = concat(
+      var.myip ? ["${chomp(data.http.myip.body)}/32"] : [],
+      var.all_traffic ? ["0.0.0.0/0"] : []
+    )
+
     description      = "Opening ${port}"
     ipv6_cidr_blocks = []
     prefix_list_ids  = []

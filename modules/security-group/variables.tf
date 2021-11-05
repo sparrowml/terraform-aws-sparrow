@@ -13,9 +13,15 @@ variable "ingress_ports" {
   description = "Ports to open for TCP traffic"
 }
 
-variable "myip" {
+variable "my_ip" {
   type        = bool
   description = "Whether to whitelist the developer's IP address"
+  default     = false
+}
+
+variable "all_traffic" {
+  type        = bool
+  description = "Whether to whitelist all traffic"
   default     = false
 }
 
