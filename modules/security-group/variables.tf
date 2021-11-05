@@ -22,7 +22,13 @@ variable "myip" {
 variable "self" {
   type        = bool
   description = "Whether to whitelist other instances with the same security group"
-  default     = true
+  default     = false
+}
+
+variable "security_group_ids" {
+  type        = list(string)
+  description = "A list of security group IDs to whitelist"
+  default     = []
 }
 
 variable "egress" {

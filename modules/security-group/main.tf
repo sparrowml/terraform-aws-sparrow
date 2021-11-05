@@ -13,7 +13,7 @@ resource "aws_security_group" "sparrow" {
     description      = "Opening ${port}"
     ipv6_cidr_blocks = []
     prefix_list_ids  = []
-    security_groups  = []
+    security_groups  = var.security_group_ids
     self             = var.self
   }]
 
