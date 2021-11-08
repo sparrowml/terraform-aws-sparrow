@@ -42,10 +42,9 @@ variable "public" {
   default     = true
 }
 
-variable "security_group_id" {
-  type        = string
-  description = "The security group to attach to the instance"
-  default     = null
+variable "security_group_ids" {
+  type        = list(string)
+  description = "The security groups to attach to the instance"
 }
 
 variable "vpc_id" {

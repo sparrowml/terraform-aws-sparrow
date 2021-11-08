@@ -1,4 +1,4 @@
 output "dns" {
-  value       = split(":", aws_db_instance.sparrow.endpoint)[0]
+  value       = aws_lb.sparrow.dns_name
   description = "The DNS of the database instance"
 }

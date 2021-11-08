@@ -19,7 +19,7 @@ resource "aws_instance" "sparrow" {
 
   key_name                    = var.key_name
   associate_public_ip_address = var.public
-  vpc_security_group_ids      = var.security_group_id != null ? [var.security_group_id] : []
+  vpc_security_group_ids      = var.security_group_ids
   iam_instance_profile        = var.iam_role
   user_data                   = var.user_data
 

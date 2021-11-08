@@ -27,5 +27,5 @@ resource "aws_db_instance" "sparrow" {
   publicly_accessible  = var.public
   skip_final_snapshot  = true
 
-  vpc_security_group_ids = var.security_group_id != null ? [var.security_group_id] : []
+  vpc_security_group_ids = var.security_group_ids
 }
