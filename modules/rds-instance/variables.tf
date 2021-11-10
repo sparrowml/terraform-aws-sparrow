@@ -19,9 +19,9 @@ variable "engine_version" {
   description = "The database engine version to use"
 }
 
-variable "instance" {
+variable "instance_type" {
   type        = string
-  description = "The type of the instance"
+  description = "The type of the RDS instance"
 }
 
 variable "storage" {

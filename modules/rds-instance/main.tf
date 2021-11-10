@@ -15,7 +15,7 @@ resource "aws_db_instance" "sparrow" {
   engine         = var.engine
   engine_version = var.engine_version
 
-  instance_class    = var.instance
+  instance_class    = var.instance_type
   allocated_storage = var.storage
   storage_encrypted = var.encrypt
 
