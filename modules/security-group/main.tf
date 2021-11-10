@@ -52,5 +52,19 @@ resource "aws_security_group" "sparrow" {
     prefix_list_ids  = []
 
     cidr_blocks = ["0.0.0.0/0"]
-  }] : []
+    }] : [for e in local.egress : {
+    description      = e.description
+    from_port        = e.port
+    to_port          = e.port
+    protocol         = "tcp"
+    self             = e.self
+    security_groups  = e.security_group_id != null ? [e.security_group_id] : []
+    ipv6_cidr_blocks = []
+    prefix_list_ids  = []
+
+    cidr_blocks = concat(
+      e.my_ip ? ["${chomp(data.http.my_ip.body)}/32"] : [],
+      e.all_traffic ? ["0.0.0.0/0"] : []
+    )
+  }]
 }
