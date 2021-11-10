@@ -46,3 +46,9 @@ variable "storage" {
   description = "Size of the root volume in Gb"
   default     = 20
 }
+
+variable "ecs_cluster_name" {
+  type        = string
+  description = "The name of the ECS cluster to join"
+  default     = null
+}
