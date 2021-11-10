@@ -14,7 +14,7 @@ data "aws_ami" "sparrow" {
 }
 
 data "template_file" "user_data" {
-  template = "${path.module}/user-data.sh"
+  template = file("${path.module}/user-data.sh")
   vars = {
     cluster_name = var.ecs_cluster_name
   }
@@ -22,7 +22,7 @@ data "template_file" "user_data" {
 
 resource "aws_instance" "sparrow" {
   ami           = data.aws_ami.sparrow.id
-  instance_type = var.instance
+  instance_type = var.instance_type
 
   tags = {
     Name = var.name

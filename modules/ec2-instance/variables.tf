@@ -3,7 +3,7 @@ variable "name" {
   description = "The name of the instance"
 }
 
-variable "instance" {
+variable "instance_type" {
   type        = string
   description = "The type of the instance"
 }
@@ -16,6 +16,7 @@ variable "vpc_id" {
 variable "key_name" {
   type        = string
   description = "The name of the key pair for SSH access"
+  default     = null
 }
 
 variable "public" {
