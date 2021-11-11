@@ -16,7 +16,7 @@ data "aws_ami" "sparrow" {
 data "template_file" "user_data" {
   template = file("${path.module}/user-data.sh")
   vars = {
-    cluster_name = var.ecs_cluster_name
+    cluster_name = var.ecs_cluster_name != null ? var.ecs_cluster_name : ""
   }
 }
 
