@@ -13,6 +13,18 @@ data "aws_ami" "sparrow" {
   }
 }
 
+data "aws_subnets" "sparrow" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
+}
+
+resource "random_shuffle" "subnet" {
+  input        = data.aws_subnets.sparrow.ids
+  result_count = 1
+}
+
 data "template_file" "user_data" {
   template = file("${path.module}/user-data.sh")
   vars = {
@@ -21,8 +33,9 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "sparrow" {
-  ami           = data.aws_ami.sparrow.id
+  ami           = var.ami != null ? var.ami : data.aws_ami.sparrow.id
   instance_type = var.instance_type
+  subnet_id     = random_shuffle.subnet.result[0]
 
   tags = {
     Name = var.name

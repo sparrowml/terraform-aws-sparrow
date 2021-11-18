@@ -8,6 +8,12 @@ variable "instance_type" {
   description = "The type of the instance"
 }
 
+variable "ami" {
+  type = string  
+  description = "Which AMI to use for the instance"
+  default = null
+}
+
 variable "vpc_id" {
   type        = string
   description = "ID of the VPC to put the instance in"
