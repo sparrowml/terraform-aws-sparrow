@@ -9,9 +9,15 @@ variable "instance_type" {
 }
 
 variable "ami" {
-  type = string  
+  type        = string
   description = "Which AMI to use for the instance"
-  default = null
+  default     = null
+}
+
+variable "subnet_id" {
+  type        = string
+  description = "Which subnet to use for the instance"
+  default     = null
 }
 
 variable "vpc_id" {

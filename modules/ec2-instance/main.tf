@@ -35,7 +35,7 @@ data "template_file" "user_data" {
 resource "aws_instance" "sparrow" {
   ami           = var.ami != null ? var.ami : data.aws_ami.sparrow.id
   instance_type = var.instance_type
-  subnet_id     = random_shuffle.subnet.result[0]
+  subnet_id     = var.subnet_id != null ? var.subnet_id : random_shuffle.subnet.result[0]
 
   tags = {
     Name = var.name
