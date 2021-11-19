@@ -60,3 +60,15 @@ variable "auth" {
   sensitive   = true
   description = "Username and password for the database"
 }
+
+variable "apply_immediately" {
+  type        = bool
+  description = "Whether to apply changes immediately"
+  default     = false
+}
+
+variable "backup_retention_period" {
+  type        = number
+  description = "Number of days to retain db backups"
+  default     = 7
+}

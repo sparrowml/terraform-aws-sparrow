@@ -11,9 +11,11 @@ resource "aws_db_subnet_group" "sparrow" {
 }
 
 resource "aws_db_instance" "sparrow" {
-  identifier     = var.name
-  engine         = var.engine
-  engine_version = var.engine_version
+  identifier              = var.name
+  engine                  = var.engine
+  engine_version          = var.engine_version
+  apply_immediately       = var.apply_immediately
+  backup_retention_period = var.backup_retention_period
 
   instance_class    = var.instance_type
   allocated_storage = var.storage
